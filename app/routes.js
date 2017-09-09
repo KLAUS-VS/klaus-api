@@ -1,15 +1,8 @@
-const Exam = require('./models/exam');
+const getExams = require('./routes/get-exams');
 
 module.exports = (app) => {
   app.get('/api/exams', (req, res) => {
-    Exam.find({}, (err, docs) => {
-      if (!err) {
-        res.send(docs);
-        process.exit();
-      } else {
-        throw (err);
-      }
-    });
+    getExams(req, res);
   });
 
   app.post('/api/exams', (req, res) => {
