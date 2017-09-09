@@ -24,6 +24,11 @@ const examSchema = mongoose.Schema({
   solutions: Boolean,
   originalQuestions: Boolean,
   comments: String,
+  concatName: {
+    type: String,
+    required: true,
+    lowercase: true,
+  },
 });
 
 module.exports = mongoose.model('Exam', examSchema);
