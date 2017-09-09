@@ -14,14 +14,14 @@ module.exports = (req, res) => {
     res.send(JSON.stringify(response));
   } else {
     const newExam = new Exam();
-    newExam.subject = req.body.subject.toLowerCase();
-    newExam.lecturer = req.body.lecturer.toLowerCase();
-    newExam.semester = req.body.semester.toLowerCase();
-    newExam.location = req.file.path.toLowerCase();
-    newExam.solutions = req.body.solutions;
-    newExam.originalQuestions = req.body.originalQuestions;
-    newExam.comments = req.body.comments.toLowerCase();
-    newExam.concatName = generateUniqueName(req.body);
+    newExam.subject = req.body.subject.trim();
+    newExam.lecturer = req.body.lecturer.trim();
+    newExam.semester = removeWhitespace(req.body.semester);
+    newExam.location = removeWhitespace(req.file.path);
+    newExam.solutions = removeWhitespace(req.body.solutions);
+    newExam.originalQuestions = removeWhitespace(req.body.originalQuestions);
+    newExam.comments = req.body.comments.trim();
+    newExam.concatName = removeWhitespace(generateUniqueName(req.body));
     newExam.save((err) => {
       if (err) {
         throw (err);
@@ -37,4 +37,8 @@ module.exports = (req, res) => {
 const generateUniqueName = (data) => {
   const name = `${data.subject}-${data.lecturer}-${data.semester}-${Date.now()}`;
   return name;
+};
+
+const removeWhitespace = (text) => {
+  return text.toLowerCase().replace(/\s/g, '');
 };
