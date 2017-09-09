@@ -1,0 +1,34 @@
+{
+  "name": "klaus-api",
+  "version": "0.0.1",
+  "description": "backend for the klaus server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KLAUS-VS/klaus-api.git"
+  },
+  "author": "KLAUS-VS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KLAUS-VS/klaus-api/issues"
+  },
+  "homepage": "https://github.com/KLAUS-VS/klaus-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "mongoose": "^4.11.10",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {
+    "@hydrant/eslint-config": "^1.1.1",
+    "eslint": "^4.6.1"
+  },
+  "eslintConfig": {
+    "extends": "@hydrant/eslint-config/modern"
+  }
+}
