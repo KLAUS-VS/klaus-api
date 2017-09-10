@@ -8,25 +8,9 @@ module.exports = (req, res) => {
         throw (err);
       }
     });
-    const response = {
-      status: 'file is not of a valid file type (pdf)',
-    };
-    res.send(JSON.stringify(response));
+    res.send({ status: 'file is not of a valid file type (pdf)' });
   } else {
     const newExam = new Exam();
-    /*
-    newExam.subject = req.body.subject.trim();
-    newExam.subStartWith = getFirstCharacter(removeWhitespace(req.body.subject));
-    newExam.lecturer = req.body.lecturer.trim();
-    newExam.semester = removeWhitespace(req.body.semester);
-    newExam.course = req.
-
-    newExam.location = removeWhitespace(req.file.path);
-    newExam.solutions = removeWhitespace(req.body.solutions);
-    newExam.originalQuestions = removeWhitespace(req.body.originalQuestions);
-    newExam.comments = req.body.comments.trim();
-    newExam.concatName = removeWhitespace(generateUniqueName(req.body));
-    */
     newExam.subject = req.body.subject;
     newExam.subStartWith = getFirstCharacter(removeWhitespace(req.body.subject));
     newExam.lecturer = req.body.lecturer;
@@ -42,10 +26,7 @@ module.exports = (req, res) => {
       if (err) {
         throw (err);
       }
-      const response = {
-        status: 'ok',
-      };
-      res.send(JSON.stringify(response));
+      res.send({ status: 'ok' });
     });
   }
 };
