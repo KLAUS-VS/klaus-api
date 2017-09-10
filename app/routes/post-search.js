@@ -27,7 +27,6 @@ const findSuccess = (suggestions, res) => {
 };
 
 const queryBuilder = (search, limit) => {
-  console.log(limit);
   const query = Exam.find({
     $or: [
       { lecturer: search },
