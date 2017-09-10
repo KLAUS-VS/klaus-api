@@ -14,14 +14,29 @@ module.exports = (req, res) => {
     res.send(JSON.stringify(response));
   } else {
     const newExam = new Exam();
+    /*
     newExam.subject = req.body.subject.trim();
     newExam.subStartWith = getFirstCharacter(removeWhitespace(req.body.subject));
     newExam.lecturer = req.body.lecturer.trim();
     newExam.semester = removeWhitespace(req.body.semester);
+    newExam.course = req.
+
     newExam.location = removeWhitespace(req.file.path);
     newExam.solutions = removeWhitespace(req.body.solutions);
     newExam.originalQuestions = removeWhitespace(req.body.originalQuestions);
     newExam.comments = req.body.comments.trim();
+    newExam.concatName = removeWhitespace(generateUniqueName(req.body));
+    */
+    newExam.subject = req.body.subject;
+    newExam.subStartWith = getFirstCharacter(removeWhitespace(req.body.subject));
+    newExam.lecturer = req.body.lecturer;
+    newExam.semester = removeWhitespace(req.body.semester);
+    newExam.course = req.body.course;
+    newExam.edv = req.body.edv;
+    newExam.location = req.file.path;
+    newExam.solutions = req.body.solutions;
+    newExam.originalQuestions = req.body.originalQuestions;
+    newExam.comments = req.body.comments;
     newExam.concatName = removeWhitespace(generateUniqueName(req.body));
     newExam.save((err) => {
       if (err) {

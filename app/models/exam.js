@@ -5,6 +5,7 @@ const examSchema = mongoose.Schema({
     type: String,
     required: true,
     lowercase: true,
+    trim: true,
   },
   subStartWith: {
     type: String,
@@ -15,8 +16,18 @@ const examSchema = mongoose.Schema({
     type: String,
     required: true,
     lowercase: true,
+    trim: true,
   },
   semester: {
+    type: String,
+    required: true,
+    lowercase: true,
+  },
+  edv: {
+    type: Number,
+    required: true,
+  },
+  course: {
     type: String,
     required: true,
     lowercase: true,
@@ -28,7 +39,10 @@ const examSchema = mongoose.Schema({
   },
   solutions: Boolean,
   originalQuestions: Boolean,
-  comments: String,
+  comments: {
+    type: String,
+    trim: true,
+  },
   concatName: {
     type: String,
     required: true,
