@@ -15,6 +15,7 @@ module.exports = (req, res) => {
   } else {
     const newExam = new Exam();
     newExam.subject = req.body.subject.trim();
+    newExam.subStartWith = getFirstCharacter(removeWhitespace(req.body.subject));
     newExam.lecturer = req.body.lecturer.trim();
     newExam.semester = removeWhitespace(req.body.semester);
     newExam.location = removeWhitespace(req.file.path);
@@ -41,4 +42,8 @@ const generateUniqueName = (data) => {
 
 const removeWhitespace = (text) => {
   return text.toLowerCase().replace(/\s/g, '');
+};
+
+const getFirstCharacter = (text) => {
+  return text.charAt(0);
 };

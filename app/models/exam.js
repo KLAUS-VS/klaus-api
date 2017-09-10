@@ -6,6 +6,11 @@ const examSchema = mongoose.Schema({
     required: true,
     lowercase: true,
   },
+  subStartWith: {
+    type: String,
+    required: true,
+    lowercase: true,
+  },
   lecturer: {
     type: String,
     required: true,
@@ -28,6 +33,7 @@ const examSchema = mongoose.Schema({
     type: String,
     required: true,
     lowercase: true,
+    unique: true,
   },
 });
 
