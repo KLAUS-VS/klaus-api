@@ -5,6 +5,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const configDB = require('./config/database.js');
 app.set('dbURL', configDB.url);
@@ -15,6 +16,7 @@ mongoose.connect(app.get('dbURL'), {
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 require('./app/routes.js')(app);
 
