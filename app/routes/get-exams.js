@@ -1,8 +1,8 @@
 const Exam = require('../models/exam');
 
 module.exports = (req, res) => {
-  const query = Exam.find({ subStartWith: 'a' }).sort({ 'date': -1 }).limit(100);
-  //const query = Exam.find({}).sort({ 'date': -1 }).limit(100);
+  //const query = Exam.find({ subStartWith: 'a' }).sort({ 'date': -1 }).limit(100);
+  const query = Exam.find({}).sort({ 'date': -1 }).limit(100);
   query.exec((err, exams) => {
     if (err) {
       throw (err);
