@@ -4,10 +4,11 @@ const getExams = require('./routes/get-exams');
 const getExamName = require('./routes/get-exam-name');
 const postExams = require('./routes/post-exams');
 const postSearch = require('./routes/post-search');
+//const postSearchAll = require('./routes/post-search-all');
 
 module.exports = (app) => {
   app.get('/api/exams', getExams);
   app.get('/api/exams/:exam', getExamName);
   app.post('/api/exams', destination.single('exam'), postExams);
-  app.post('/api/search', postSearch);
+  app.post('/api/search/:limit', postSearch);
 };

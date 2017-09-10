@@ -2,14 +2,7 @@ const Exam = require('../models/exam');
 
 module.exports = (req, res) => {
   const regex = new RegExp('^' + req.body.search);
-  console.log(typeof searchString);
-  const query = Exam.find({
-    $or: [
-      { lecturer: regex },
-      { subject: regex },
-      { course: regex },
-    ],
-  }).limit(5);
+  const query = queryBuilder(regex, req.params.limit);
   query.exec((err, suggestions) => {
     if (err) {
       throw (err);
@@ -31,4 +24,19 @@ const findSuccess = (suggestions, res) => {
     response.push(customResponseObject);
   });
   res.send(response);
+};
+
+const queryBuilder = (search, limit) => {
+  console.log(limit);
+  const query = Exam.find({
+    $or: [
+      { lecturer: search },
+      { subject: search },
+      { course: search },
+    ],
+  });
+  if (limit === 'false') {
+    return query;
+  }
+  return query.limit(5);
 };
